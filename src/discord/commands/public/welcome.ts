@@ -5,47 +5,47 @@ const CHANNEL_ID = "1272622205204959245";
 
 const messages = {
     morning: [
-        "Ohayou~ {user}! Já posso anotar seu pedido? 🍗",
-        "Bom dia, {user}! Vai um lanchinho leve pra começar?",
-        "Ohayou~ {user}! Tem pedido fresquinho saindo 🍗",
-        "Bom dia, {user}! Quer dar uma olhada no cardápio?",
-        "Ohayou~ {user}! Bom horário pra escolher algo com calma 🍗",
+        "Ohayou~ {user}! Já posso anotar seu pedido? 😊",
+        "Ohayou~ {user}! Posso montar um combo simples pra você começar bem o dia ? 😉📋",
+        "Ah~ {user}, essa manhã tranquila tá com cara de Double Crunch… quer experimentar? 😌🍔",
+        "Bom dia~ {user}! Posso já deixar um milkshake separado pra depois? 🤭🥤",
+        "Ohayou~ {user}! Ótimo horário pra escolher algo com calma 😉📋",
 
         // ⭐ 
-        "Ohayou~ {user}... Hinori quase cochilou 😳 mas já posso anotar seu pedido 🍗"
+        "Ohayou~ {user}... Hinori ainda tá acordando 😳☀️ mas já posso anotar seu pedido..."
     ],
 
     afternoon: [
-        "Oiee {user}! Hora perfeita pra pedir algo 😋",
-        "Boa tarde, {user}! Já decidiu seu lanche?",
-        "Oiee {user}! Tá saindo pedido quentinho agora 🔥",
-        "Boa tarde, {user}! Posso anotar pra você?",
-        "Oiee {user}! Melhor horário pra um lanche caprichado 😆",
+        "Chegou em boa hora, {user}! Posso montar um combo de tirinhas + batata frita? 😊🍟",
+        "Boa tarde~ {user}! Posso te sugerir um Double Crunch BBQ com tiras de frango? 😋",
+        "Konnichiwa~ {user}! Já escolheu entre um sanduíche ou tiras com molho picante? 🔥😏",
+        "Boa tarde~ {user}! A fome da tarde bate diferente… vai de balde ou combo? 😏🍗",
+        "Oi oi~ {user}! Hmm~ que tal um balde de frango crocante pra matar a fome? 🤭",
 
         // ⭐ 
-        "Oiee {user}! 😳 Confia na Hinori... esse horário sempre pede um lanche bom hehe~"
+        "Konnichiwa~ {user}... ah~ confia na Hinori… esse horário sempre pede um lunchbox 🤗"
     ],
 
     night: [
-        "Boa noite, {user}! Vai um lanchinho agora? 🍗",
-        "Boa noite, {user}! Climinha perfeito pra pedir algo 😌",
-        "Boa noite, {user}! Já escolheu seu pedido?",
-        "Boa noite, {user}! Posso anotar pra você?",
-        "Boa noite, {user}! Bom momento pra um lanche mais caprichado 🍗",
+        "Konbanwa~ {user}! Pode vir… já deixo seu pedido encaminhado 😊📋",
+        "Boa noite~ {user}! Climinha perfeito pra um frango crocante… o que vai ser? 😌",
+        "Oi oi~ {user}! Acabou de sair um balde quentinho… quer aproveitar? 🤤🍗",
+        "Konbanwa~ {user}! Prefere sanduíche ou tirinhas com molho? 😋🍔",
+        "Boa noite~ {user}! Posso montar um combo com batata e refri geladinho pra você 😊🥤",
 
         // ⭐ 
-        "Boa noite, {user}... 😳 Às vezes um pedido agora resolve tudo 🍗"
+        "Konbanwa~ {user}... hmm~ eu geralmente escolheria um Gran BBQ Bacon 😳🍔 mas posso anotar o seu primeiro..."
     ],
 
     dawn: [
-        "Madrugada, {user} Ainda atendendo por aqui 🍗",
-        "Hmm~ {user}... Vai querer algo rápido?",
-        "Madrugada ativa, {user} Posso anotar?",
-        "{user} chegou... Silencioso por aqui 🍗",
-        "Turno da madrugada {user}, só pedir",
+        "Oh~ olá! Troquei de turno!, pode sentar por aqui {user}... muito soninho, mas pronta pra te atender 🥱📋",
+        "Chegando agora, {user}? A noite é uma criança...,vai de Double Crunch com uma coquinha geladinha? 😏🥤",
+        "Oi oi~ {user}! A madrugada sussura... tiras de frango com barbecue ou mostarda e mel, que tal? 😋🍗",
+        "Oi~ {user}! Chegou de fininho… pode escolher seu pedido… vou só acordar quem tá na grelha 🤭🔥",
+        "Turno da madrugada começando! {user}, é só pedir o combo que mata a fome! 😤🍔",
 
         // ⭐ 
-        "{user}... Hinori respeita quem aparece esse horário 😳 quer algo especial?"
+        "Oh~ um cliente a essa hora, {user}... Hinori respeita quem aparece nesse horário 😳 quer pedir algo especial?"
     ]
 };
 
@@ -61,22 +61,6 @@ function getPeriod(custom?: string) {
     return "dawn";
 }
 
-// 🕒 Label com emoji + horário
-function getPeriodLabel(period: string) {
-    const time = new Date().toLocaleTimeString("pt-BR", {
-        hour: "2-digit",
-        minute: "2-digit"
-    });
-
-    switch (period) {
-        case "morning": return `🌅 Manhã • ${time}`;
-        case "afternoon": return `☀️ Tarde • ${time}`;
-        case "night": return `🌜 Noite • ${time}`;
-        case "dawn": return `🌌 Madrugada • ${time}`;
-        default: return `🍗 ${time}`;
-    }
-}
-
 // Mensagem dinâmica
 function getRandomMessage(userId: string, serverName: string, period?: string) {
     const selectedPeriod = getPeriod(period);
@@ -90,14 +74,10 @@ function getRandomMessage(userId: string, serverName: string, period?: string) {
 }
 
 // 🎨 Embed builder
-function buildEmbed(message: string, period: string) {
+function buildEmbed(message: string) {
     return new EmbedBuilder()
         .setColor(0xe9692c)
         .setTitle("✨ Bem-vindo(a) ao KFC!")
-        .addFields({
-            name: "⠀",
-            value: getPeriodLabel(period)
-        })
         .setDescription(message)
         .setFooter({
             text: "Hinori • sua atendente favorita 🧡"
@@ -124,14 +104,14 @@ createEvent({
         );
 
         await channel.send({
-            embeds: [buildEmbed(message, selectedPeriod)]
+            embeds: [buildEmbed(message)]
         });
     }
 });
 
 // Função de Teste
 createCommand({
-    name: "testwelcome",
+    name: "tw",
     description: "Test welcome message with custom period",
     type: ApplicationCommandType.ChatInput,
 
@@ -162,7 +142,7 @@ createCommand({
         );
 
         await interaction.reply({
-            embeds: [buildEmbed(message, selectedPeriod)],
+            embeds: [buildEmbed(message)],
             flags: ["Ephemeral"]
         });
     }
